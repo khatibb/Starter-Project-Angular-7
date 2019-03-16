@@ -1,0 +1,28 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+</head>
+
+<div class="jumbotron" style="padding:45px 0px">
+    <h4 class="text-center">My Tasks</h4>
+</div>
+
+<div class="input-group">
+    <input type="text" class="form-control" #itemTitle>
+    <div class="input-group-addon hover-cursor" (click)="onAdd(itemTitle)">
+        <i class="fa fa-plus-circle fa-2x"></i>
+    </div>
+</div>
+
+<div style="margin:5px 0px">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of toDoListArray">
+            <span class="hover-cursor" [class.text-success]="item.isChecked" (click)="alterCheck(item.id)">
+        <i class="fa fa-lg" [ngClass]="item.isChecked?'fa-check-circle-o':'fa-circle-thin'"></i>
+      </span> {{item.text}}
+            <span class="hover-cursor text-danger pull-right" (click)="onDelete(item.id)">
+        <i class="fa fa-trash-o fa-lg"></i>
+      </span>
+        </li>
+    </ul>
